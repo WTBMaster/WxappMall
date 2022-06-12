@@ -206,7 +206,7 @@ const allGoods = [
 | ----------------------------------- | --------------------------------------------
 | saasId                              | 多租户的id，暂时用不到
 | storeId                             | 商店Id，单用户就设置为固定值
-| spuId                               |
+| spuId                               | 商品id
 | title                               | 商品名称
 | spuTagList                          | 商品卡片的tag
 | primaryImage                        | 商品卡片展示的URL,string

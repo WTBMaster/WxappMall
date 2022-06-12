@@ -12,3 +12,40 @@ description: '满100元减99.9元,已减99.9元',
 doorSillRemain: null,
 isNeedAddOnShop: 0
 
+| param            | explain
+| ---------------- |
+| title            | 现在了解到的不展示
+| promotionCode    | EMPTY_PROMOTION 没有活动
+| promotionSubCode | 促销类型
+| promotionId      | id
+| tagText          | 商品详情页领取优惠券的文案
+| promotionStatus  | 暂时不了解什么用
+| tag              | 购物车优惠栏的tag
+| description      | 购物车中满足条件了。这里写死是又问题的
+| doorSillRemain   | 不知道干嘛
+| isNeedAddOnShop  | boolean, 绑定是否满足这个促销活动；'去凑单' : '再逛逛'
+
+尝试建表
+promotion
+    id                      // promotionId
+    code varchar            // sub code
+    pm_text                 // tagText，可能不要list。暂定，想修改
+    status tinyint          // promotionStatus
+    cart_tag varchar        // tag
+    description             // 还差多少或者已减多少，前端业务逻辑
+    enabled  boolean        // 活动是否开启
+    deadline int64          // 截止的时间戳
+
+
+Note:
+- isNeedAddOnShop 前端逻辑
+- promotionCode 感觉有点多余
+- 定时任务把关联的过期活动取消？
+
+
+
+
+
+
+
+
