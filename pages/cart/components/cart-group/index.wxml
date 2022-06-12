@@ -1,6 +1,6 @@
 <wxs module="handlePromotion">
 	var hasPromotion = function (code) {
-	return code && code !== 'EMPTY_PROMOTION';
+		return code && code !== 'EMPTY_PROMOTION';
 	}
 	module.exports.hasPromotion = hasPromotion;
 </wxs>

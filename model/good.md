@@ -1,0 +1,2 @@
+- `spuTagList` 商品列表中具体商品的tag
+- 

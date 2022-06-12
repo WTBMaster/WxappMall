@@ -1,0 +1,291 @@
+# 商品
+=====
+
+// file:  model/goods.js -------------------------------------------------------------------
+// 例如baseID 10 length 10，则 genGood(10, 11, ... 19)
+getGoodsList(baseID = 0, length = 10) {
+  return new Array(length).fill(0).map((_, idx) => genGood(idx + baseID));
+}
+
+export const goodsList = getGoodsList();
+
+// model/good.js ---------------------------------------------------------------------------
+/**
+ * @param {string} id
+ * @param {number} [available] 库存, 默认1
+ */
+export function genGood(id, available = 1) {
+  const specID = ['135681624', '135681628'];
+  if (specID.indexOf(id) > -1) {
+    return allGoods.filter((good) => good.spuId === id)[0];
+  }
+  const item = allGoods[id % allGoods.length];
+  return {
+    ...item,
+    spuId: `${id}`,
+    available: available,
+    desc: item?.desc || defaultDesc,
+    images: item?.images || [item?.primaryImage],
+  };
+}
+
+const allGoods = [
+  {
+    saasId: '88888888',
+    storeId: '1000',
+    spuId: '0',
+    title: '白色短袖连衣裙荷叶边裙摆宽松韩版休闲纯白清爽优雅连衣裙',
+    primaryImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
+    images: [
+      'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
+      'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09b.png',
+    ],
+    video: null,
+    available: 1,
+    minSalePrice: 29800,
+    minLinePrice: 29800,
+    maxSalePrice: 29800,
+    maxLinePrice: 40000,
+    spuStockQuantity: 510,
+    soldNum: 1020,
+    isPutOnSale: 1,
+    categoryIds: [
+      '127880527393854975',
+      '127880527393854976',
+      '127880537778953984',
+    ],
+    specList: [
+      {
+        specId: '10011',
+        title: '颜色',
+        specValueList: [
+          {
+            specValueId: '10012',
+            specId: null,
+            saasId: null,
+            specValue: '米色荷叶边',
+            image: null,
+          },
+        ],
+      },
+      {
+        specId: '10013',
+        title: '尺码',
+        specValueList: [
+          {
+            specValueId: '11014',
+            specId: null,
+            saasId: null,
+            specValue: 'S',
+            image: null,
+          },
+          {
+            specValueId: '10014',
+            specId: null,
+            saasId: null,
+            specValue: 'M',
+            image: null,
+          },
+          {
+            specValueId: '11013',
+            specId: null,
+            saasId: null,
+            specValue: 'L',
+            image: null,
+          },
+        ],
+      },
+    ],
+    skuList: [
+      {
+        skuId: '135676631',
+        skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
+        specInfo: [
+          {
+            specId: '10011',
+            specTitle: null,
+            specTitle: '10012',
+            specValue: null,
+          },
+          {
+            specId: '10013',
+            specTitle: null,
+            specValueId: '11014',
+            specValue: null,
+          },
+        ],
+        priceInfo: [
+          { priceType: 1, price: '29800', priceTypeName: null },
+          { priceType: 2, price: '40000', priceTypeName: null },
+        ],
+        stockInfo: {
+          stockQuantity: 175,
+          safeStockQuantity: 0,
+          soldQuantity: 0,
+        },
+        weight: { value: null, unit: 'KG' },
+        volume: null,
+        profitPrice: null,
+      },
+      {
+        skuId: '135676632',
+        skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
+        specInfo: [
+          {
+            specId: '10011',
+            specTitle: null,
+            specValueId: '10012',
+            specValue: null,
+          },
+          {
+            specId: '10013',
+            specTitle: null,
+            specValueId: '11013',
+            specValue: null,
+          },
+        ],
+        priceInfo: [
+          { priceType: 1, price: '29800', priceTypeName: null },
+          { priceType: 2, price: '40000', priceTypeName: null },
+        ],
+        stockInfo: {
+          stockQuantity: 158,
+          safeStockQuantity: 0,
+          soldQuantity: 0,
+        },
+        weight: { value: null, unit: 'KG' },
+        volume: null,
+        profitPrice: null,
+      },
+      {
+        skuId: '135681631',
+        skuImage: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09a.png',
+        specInfo: [
+          {
+            specId: '10011',
+            specTitle: null,
+            specValueId: '10012',
+            specValue: null,
+          },
+          {
+            specId: '10013',
+            specTitle: null,
+            specValueId: '10014',
+            specValue: null,
+          },
+        ],
+        priceInfo: [
+          { priceType: 1, price: '29800', priceTypeName: null },
+          { priceType: 2, price: '40000', priceTypeName: null },
+        ],
+        stockInfo: {
+          stockQuantity: 177,
+          safeStockQuantity: 0,
+          soldQuantity: 0,
+        },
+        weight: { value: null, unit: 'KG' },
+        volume: null,
+        profitPrice: null,
+      },
+    ],
+    spuTagList: [{ id: '13001', title: '限时抢购', image: null }],
+    limitInfo: [
+      {
+        text: '限购5件',
+      },
+    ],
+    desc: [
+      'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09c.png',
+      'https://cdn-we-retail.ym.tencent.com/tsr/goods/nz-09d.png',
+    ],
+    etitle: '',
+  }
+]
+
+| param                               | explain
+| ----------------------------------- | --------------------------------------------
+| saasId                              | 多租户的id，暂时用不到
+| storeId                             | 商店Id，单用户就设置为固定值
+| spuId                               |
+| title                               | 商品名称
+| spuTagList                          | 商品卡片的tag
+| primaryImage                        | 商品卡片展示的URL,string
+| images                              | 商品的其他图，大图也有可能是第一个
+| video                               | 视频
+| available                           | number
+| minSalePrice                        | number, 当前价格或促销后的价格
+| minLinePrice                        | 无效del
+| maxSalePrice                        | 无效del
+| maxLinePrice                        | 原本价格
+| isSoldOut                           | 商品已售罄，可以通过 skuList.stockInfo.stockQuantity 来判断该值
+| spuStockQuantity                    | number,商品库存
+| soldNum                             | number,售出件数
+| isPutOnSale                         | number
+| categoryIds                         | list[string]
+| specList                            | list[object]
+| specList.specId                     |
+| specList.title                      | 颜色，尺码等
+| specList.specValueList              | list[object]
+| specList.specValueList.specValueId  |
+| specList.specValueList.specId       | null
+| specList.specValueList.saasId       | null
+| specList.specValueList.specValue    | 米色荷叶边, s, L
+| specList.specValueList.image        | null
+| skuList                             | list[object]
+| skuList.skuId                       |
+| skuList.skuImage                    |
+| skuList.specInfo                    | list[object]
+| skuList.specInfo.specId             |
+| skuList.specInfo.specTitle          |
+| skuList.specInfo.specTitle          |
+| skuList.specInfo.specValue          |
+| skuList.priceInfo                   | list[object]
+| skuList.priceInfo.priceType         |
+| skuList.priceInfo.price             |
+| skuList.priceInfo.priceTypeName     |
+| skuList.stockInfo                   | object
+| skuList.stockInfo.stockQuantity     | number,商品库存,若为0，则购物车该商品图标会显示无效的logo
+| skuList.stockInfo.safeStockQuantity |
+| skuList.stockInfo.soldQuantity      |
+| skuList.weight                      |
+| skuList.volume                      |
+| skuList.profitPrice                 |
+| spuTagList                          | list[object]
+| spuTagList.id                       |
+| spuTagList.title                    |
+| spuTagList.image                    |
+| limitInfo                           | list[object]
+| limitInfo.text                      |  限购5件
+| desc                                | list[url], 商品详情介绍的图片url，一次全部展示
+| etitle                              | 不知道干嘛
+
+
+
+// services/good/fetchGoods.js ---------------------------------------------------------------
+
+function mockFetchGoodsList(pageIndex = 1, pageSize = 20) {
+  const { delay } = require('../_utils/delay');
+  const { getGoodsList } = require('../../model/goods');
+  return delay().then(() =>
+    getGoodsList(pageIndex, pageSize).map((item) => {
+      return {
+        spuId: item.spuId,
+        thumb: item.primaryImage,
+        title: item.title,
+        price: item.minSalePrice,
+        originPrice: item.maxLinePrice,
+        tags: item.spuTagList.map((tag) => tag.title),
+      };
+    }),
+  );
+}
+
+/** 获取商品列表 */
+export function fetchGoodsList(pageIndex = 1, pageSize = 20) {
+  if (config.useMock) {
+    return mockFetchGoodsList(pageIndex, pageSize);
+  }
+  return new Promise((resolve) => {
+    resolve('real api');
+  });
+}

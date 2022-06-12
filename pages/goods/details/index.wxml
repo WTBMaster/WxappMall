@@ -32,6 +32,7 @@
 				</view>
 				<view class="sold-num">已售{{soldNum}}</view>
 			</view>
+			<!-- 满减等优惠信息tag   领卷 -->
 			<view wx:if="{{activityList.length > 0}}" class="goods-activity" bindtap="showPromotionPopup">
 				<view class="tags-container">
 					<view
@@ -164,6 +165,7 @@
 			</view>
 		</view>
 	</goods-specs-popup>
+	<!-- 领券弹窗 -->
 	<promotion-popup
 	  list="{{list}}"
 	  bind:closePromotionPopup="closePromotionPopup"

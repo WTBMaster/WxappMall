@@ -1,3 +1,4 @@
+<!-- Home 商品列表的简图 -->
 <view
   id="{{independentID}}"
   class="goods-card"
@@ -31,6 +32,7 @@
 					</view>
 				</view>
 			</view>
+			<!-- 第三行 价格 购物车icon -->
 			<view class="goods-card__down">
 				<price
 				  wx:if="{{ goods.price }}"

@@ -7,8 +7,8 @@ export function getActivity(key) {
     title: `满减满折回归${key}`,
     description: null,
     promotionCode: 'MERCHANT',
-    promotionSubCode: key % 2 === 0 ? 'MYJ' : 'MYG',
-    tag: '满减',
+    promotionSubCode: key % 2 === 0 ? 'MYJ' : 'MYG', // 最后会转化为领券弹窗的tag
+    tag: '满减', // 商品详情页的tag
     timeType: 1,
     startTime: '1588737710000',
     endTime: '1601467070000',
