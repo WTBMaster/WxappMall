@@ -222,16 +222,16 @@ const allGoods = [
 | soldNum                             | number,售出件数
 | isPutOnSale                         | number
 | categoryIds                         | list[string]
-| specList                            | list[object]
-| specList.specId                     |
+| specList                            | list[object],该商品的样式选择（颜色，尺码等）
+| specList.specId                     | id
 | specList.title                      | 颜色，尺码等
 | specList.specValueList              | list[object]
-| specList.specValueList.specValueId  |
+| specList.specValueList.specValueId  | id
 | specList.specValueList.specId       | null
 | specList.specValueList.saasId       | null
-| specList.specValueList.specValue    | 米色荷叶边, s, L
+| specList.specValueList.specValue    | 具体样式；米色荷叶边, s, L
 | specList.specValueList.image        | null
-| skuList                             | list[object]
+| skuList                             | list[object],与specList相关联。涉及某特定样式的库存，价格等
 | skuList.skuId                       |
 | skuList.skuImage                    |
 | skuList.specInfo                    | list[object]
@@ -255,7 +255,9 @@ const allGoods = [
 | spuTagList.title                    |
 | spuTagList.image                    |
 | limitInfo                           | list[object]
-| limitInfo.text                      |  限购5件
+| limitInfo.text                      | 限购5件
+| limitInfo.limitMinCount             | 【新增】最低购买件数，要传给组件 goods-specs-popup 
+| limitInfo.limitMaxCount             | 【新增】最大购买件数
 | desc                                | list[url], 商品详情介绍的图片url，一次全部展示
 | etitle                              | 不知道干嘛
 
@@ -289,3 +291,67 @@ export function fetchGoodsList(pageIndex = 1, pageSize = 20) {
     resolve('real api');
   });
 }
+
+
+skuList.forEach((item) => {
+  skuArray.push({
+    skuId: item.skuId,
+    quantity: item.stockInfo ? item.stockInfo.stockQuantity : 0,
+    specInfo: item.specInfo,
+  });
+});
+
+
+<goods-specs-popup
+	  id="goodsSpecsPopup"
+	  show="{{isSpuSelectPopupShow}}"
+	  title="{{details.title || ''}}"
+	  src="{{specImg ? specImg : primaryImage}}"
+	  specList="{{details.specList || []}}"
+	  skuList="{{skuArray}}"
+	  limitBuyInfo="{{details.limitInfo[0].text || ''}}"
+	  bind:closeSpecsPopup="handlePopupHide"
+	  bind:change="chooseSpecItem"
+	  bind:changeNum="changeNum"
+	  bind:addCart="addCart"
+	  bind:buyNow="gotoBuy"
+	  bind:specsConfirm="specsConfirm"
+	  isStock="{{isStock}}"
+	  outOperateStatus="{{outOperateStatus}}"
+	>
+		<view slot="goods-price">
+			<view class="popup-sku__price">
+				<price
+				  wx:if="{{!isAllSelectedSku || (!promotionSubCode && isAllSelectedSku)}}"
+				  price="{{selectSkuSellsPrice ? selectSkuSellsPrice : minSalePrice }}"
+				  wr-class="popup-sku__price-num"
+				  symbol-class="popup-sku__price-symbol"
+				/>
+				<price
+				  wx:if="{{selectSkuSellsPrice === 0 && minSalePrice !== maxSalePrice && !isAllSelectedSku}}"
+				  price="{{maxSalePrice}}"
+				  wr-class="popup-sku__price-del"
+				  type="delthrough"
+				/>
+			</view>
+		</view>
+	</goods-specs-popup>
+
+  ## 尝试建表
+  goods
+    id                            // spuId
+    store_id                      // 单商家可以不需要
+    title                         // 商品名称 
+    spuTagList                    // 商品卡片的tag
+    primaryImage varchar          // 商品主图，card显示，选择规格的时候显示
+    images                        // 商品详情轮播图，包括primaryImage，可简化逻辑
+    video                         // 视频
+    available                     // 暂时不知道干嘛 ------------------
+    minSalePrice int              // 单位分，当前价格
+    maxLinePrice int              // 原本价格 
+    spuStockQuantity int          // 商品库存总数
+    soldNum int                   // 件数
+    isPutOnSale number            // 不知道干嘛-------------------
+    categoryIds                   // 不知道干嘛---------------------------
+
+

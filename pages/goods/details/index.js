@@ -66,15 +66,15 @@ Page({
     cartNum: 0,
     soldout: false,
     buttonType: 1,
-    buyNum: 1,
+    buyNum: 1,   // 用户所选择的件数
     selectedAttrStr: '',
     skuArray: [],
-    primaryImage: '',
-    specImg: '',
-    isSpuSelectPopupShow: false,
-    isAllSelectedSku: false,
-    buyType: 0,
-    outOperateStatus: false, // 是否外层加入购物车
+    primaryImage: '',             // 主图
+    specImg: '',                  // 缩略图
+    isSpuSelectPopupShow: false,  // 是否展示选择规格弹窗
+    isAllSelectedSku: false,      // 是否所有的规格条件都选择了
+    buyType: 0,                   // 0: 点击已选这一栏； 1： 点了加入购物车； 2：点了立即购买
+    outOperateStatus: false,      // buybar,点击购物车 或者 点击立即购买
     operateType: 0,
     selectSkuSellsPrice: 0,
     maxLinePrice: 0,
@@ -90,12 +90,17 @@ Page({
     soldNum: 0, // 已售数量
   },
 
+  // 关闭选择弹窗
   handlePopupHide() {
     this.setData({
       isSpuSelectPopupShow: false,
     });
   },
 
+  // buyType的取值：
+  //    0: 点击已选这一栏
+  //    1: 点了加入购物车
+  //    2: 点了立即购买
   showSkuSelectPopup(type) {
     this.setData({
       buyType: type || 0,
@@ -220,6 +225,7 @@ Page({
     }
   },
 
+  // 选择规格后，加入购物车
   addCart() {
     const { isAllSelectedSku } = this.data;
     Toast({
@@ -272,6 +278,7 @@ Page({
     // this.handlePopupHide();
   },
 
+  // 修改购买的件数
   changeNum(e) {
     this.setData({
       buyNum: e.detail.buyNum,

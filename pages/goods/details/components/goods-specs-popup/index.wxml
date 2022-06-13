@@ -50,6 +50,7 @@
 					</block>
 				</view>
 			</view>
+			<!-- 购买数量 - 数量 +  -->
 			<view class="popup-sku-stepper-stock">
 				<view class="popup-sku-stepper-container">
 					<view class="popup-sku__stepper-title">
@@ -78,6 +79,9 @@
 				</view>
 			</view>
 		</view>
+		<!-- 下面这2个选择规格后下面的按钮，有2中
+		1、确定；上一步时点击 加入购物车 或者 购买
+		2、已选这一栏，有按钮是  加入购物车 购买 这两个 -->
 		<view wx:if="{{outOperateStatus}}" class="single-confirm-btn {{!isStock ? 'disabled' : ''}}" bindtap="specsConfirm">
 			确定
 		</view>

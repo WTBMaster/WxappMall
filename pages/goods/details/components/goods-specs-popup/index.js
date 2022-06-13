@@ -96,6 +96,24 @@ Component({
           });
         }
       });
+      /*
+       *  specList: {
+       *    specId
+       *    title
+       *    specValueList: [
+       *      {
+       *        specValueId
+       *        specId
+       *        saasId
+       *        specValue: 'S'
+       *        image
+       *        hasStockObj: {
+       *          specsArray: [specValueId]
+       *          hasStock
+       *        }
+       *    ]
+       *  }  
+       */      
       const selectedSku = {};
       specList.forEach((item) => {
         selectedSku[item.specId] = '';
@@ -340,6 +358,7 @@ Component({
     },
 
     // 加
+    // TODO: 件数限制逻辑修改
     handleBuyNumPlus() {
       const { buyNum } = this.data;
       const { isStock } = this.properties;

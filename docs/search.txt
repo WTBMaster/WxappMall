@@ -1,0 +1,38 @@
+# 搜索
+-----
+
+| param        | explain
+| ------------ | ---------
+| historyWords | list[str]
+| popularWords | list[str]
+
+Note:
+-----
+
+如果要有搜索历史的话，那么需要对用户搜索词进行存储。
+只展示前10个
+
+尝试建表：
+--------
+
+search_words
+    id int
+    user_id 
+    popular varchar         // historyWords
+    history varchar         // popularWords
+    type enum|tinyint       // 类型
+    create_time            
+    
+搜索结果
+-------
+
+[
+    {
+        spuId: spuId,
+        thumb: primaryImage
+        title: title,
+        price: minSalePrice,
+        originPrice: maxLinePrice
+        tags: item.spuTagList.map((tag) => ({ title: tag.title })) or []
+    }
+]

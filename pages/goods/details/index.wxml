@@ -131,6 +131,7 @@
 		  class="goods-details-card"
 		/>
 	</view>
+	<!-- TODO: 传入限制最低，最大购买件数 -->
 	<goods-specs-popup
 	  id="goodsSpecsPopup"
 	  show="{{isSpuSelectPopupShow}}"

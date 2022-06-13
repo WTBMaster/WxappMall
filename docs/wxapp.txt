@@ -1,0 +1,13 @@
+# 开发技巧
+---------
+
+组件A：
+<view class="goods-price-container">
+    <slot name="goods-price" />
+</view>
+
+引用组件A的组件B:
+<goods-specs-popup>
+    <view slot="goods-price">
+    </view>
+</goods-specs-popup>

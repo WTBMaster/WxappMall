@@ -1,0 +1,22 @@
+# 轮播图
+--------
+
+[
+  {
+    img: 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png',
+    text: '1',
+  }
+]
+
+| param | explain
+| ----- | --------
+| img   | 图片的地址
+| text  | 说明，小程序未显示
+
+Table:
+------
+swiper
+    id 
+    img  varchar 
+    text varchar
+    enabled boolean
