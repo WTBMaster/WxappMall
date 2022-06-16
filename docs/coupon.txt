@@ -1,0 +1,33 @@
+# 优惠券
+------
+
+coupon_spec {
+    _id,
+    enable      // true  or  false
+    type        // 折扣 或者 满减
+    value
+    tag
+    desc        // 满多少钱可用  无门槛使用
+    title       // 什么的折扣券
+    begin       // 开始时间
+    deadline    // 到期时间
+}
+
+还有2个通用字段
+    store_adapt  商城通用
+    use_notes    1个订单限用1张，除运费券外，不能与其它类型的优惠券叠加使用（运费券除外）
+                 2.仅适用于各区域正常售卖商品，不支持团购、抢购、预售类商品
+
+还要给商品关联 coupon_id
+
+
+1、去使用 ？ 号弹窗有问题，需要修复
+2、领卷中心页面缺失
+
+coupon {
+    _id
+    coupon_spec_id
+    user_id
+    status  // default 可使用  useless 已使用 disabled 已失效
+}
+
