@@ -1,0 +1,38 @@
+# comments
+----------
+
+comment {
+    _id 
+    commentContent   用户评论内容
+    commentScore     用户评论分数
+    user_id          用户id
+    spu_id           商品id
+    isAnonymity      是否匿名
+    commentTime      评论时间
+    isAutoComment    boolean
+    sellerReply      用户评论
+    goodsDetailInfo  所选择的商品规格    颜色:纯净白  尺码:S码
+    commentResources [{ src: url, type: video|image, coverSrc: url }]       // video有coverSrc字段
+
+    expressRate     物流评价     前端不展示
+    serviceRate     服务评价     前端不展示
+}
+
+商品评论数 {
+    commentCount    评论条数
+    badCount        差评
+    middleCount     中评
+    goodCount       好评
+    hasImageCount   带图
+    goodRate        好评率
+}
+
+商品详情页只有一条评论
+homePageComments {
+    spuId
+    skuId               null
+    specInfo            null
+    commentContent      评论内容
+    commentScore        4
+}
+

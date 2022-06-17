@@ -11,3 +11,6 @@
     <view slot="goods-price">
     </view>
 </goods-specs-popup>
+
+高亮逻辑：
+	<t-tag t-class="comments-header-tag {{commentType === '' ? 'comments-header-active' : ''}}" data-commentType="" bindtap="changeTag">

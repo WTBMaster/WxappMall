@@ -34,7 +34,7 @@
 		  commentTime="{{item.commentTime}}"
 		  isAutoComment="{{item.isAutoComment}}"
 		  userHeadUrl="{{item.userHeadUrl}}"
-		  specInfo="{{item.specInfo}}"
+		  specInfo="{{item.specInfo}}"			<!-- TODO：多余 -->
 		  sellerReply="{{item.sellerReply || ''}}"
 		  goodsDetailInfo="{{item.goodsDetailInfo || ''}}"
 		/>

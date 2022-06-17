@@ -347,6 +347,10 @@ Page({
     });
   },
 
+  /*
+   * 这个逻辑需要修改，搞得太复杂了
+   * 获取一条比较好的评论，注意下面的返回格式
+   */
   async getCommentsList() {
     try {
       const code = 'Success';
@@ -421,7 +425,7 @@ Page({
     }
   },
 
-  /** 跳转到评价列表 */
+  /** 跳转到评价列表 Spuid 为商品id*/
   navToCommentsListPage() {
     wx.navigateTo({
       url: `/pages/goods/comments/index?spuId=${this.data.spuId}`,

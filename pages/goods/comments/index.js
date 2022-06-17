@@ -1,9 +1,11 @@
 import { fetchComments } from '../../../services/comments/fetchComments';
 import { fetchCommentsCount } from '../../../services/comments/fetchCommentsCount';
 import dayjs from 'dayjs';
+
 const layoutMap = {
   0: 'vertical',
 };
+
 Page({
   data: {
     pageLoading: false,
@@ -18,8 +20,8 @@ Page({
     loadMoreStatus: 0,
     myLoadStatus: 0,
     spuId: '1060004',
-    commentLevel: '',
-    hasImage: '',
+    commentLevel: '',   //
+    hasImage: '',       // 带图
     commentType: '',
     totalCount: 0,
     countObj: {
@@ -104,6 +106,7 @@ Page({
       loadMoreStatus: 1,
     });
 
+    // TODO: 逻辑不完善，好差评等没有实现
     try {
       const data = await fetchComments(params, {
         method: 'POST',
@@ -112,6 +115,7 @@ Page({
       if (code.toUpperCase() === 'SUCCESS') {
         const { pageList, totalCount = 0 } = data;
         pageList.forEach((item) => {
+          // 修改时间逻辑
           // eslint-disable-next-line no-param-reassign
           item.commentTime = dayjs(Number(item.commentTime)).format(
             'YYYY/MM/DD HH:mm',
